@@ -19,15 +19,30 @@ const saveInDB = async () => {
 }
 // saveInDB();
 
-const updateDB = async () => {
+const updateInDB = async () => {
     const product = mongoose.model('products', productSchema);
     const data = await product.updateOne(
-        { name: "alpha air" },
+        { name: "alpha" },
         {
             $set: { name: "alpha air", price: 5500 }
         }
     )
     console.log(data);
 }
+// updateInDB();
 
-updateDB();
+const deleteInDB = async () => {
+    const product = mongoose.model('products', productSchema);
+    const data = await product.deleteOne({
+        name:"alpha air"
+    })
+    console.log(data);
+}
+// deleteInDB();
+
+const findInDB = async ()=>{
+    const product = mongoose.model('products', productSchema);
+    const data = await product.find();
+    console.log(data);
+}
+findInDB();
